@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbejnooqc4jc8"]
+
+[ext_resource type="Script" uid="uid://dufkwaev475r4" path="res://صحنه‌ها/اعلان/اعلان.gd" id="1_gt7i8"]
+
+[sub_resource type="Animation" id="Animation_3v72v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_gt7i8"]
+resource_name = "پویانمایی"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3v72v"]
+_data = {
+&"RESET": SubResource("Animation_3v72v"),
+&"پویانمایی": SubResource("Animation_gt7i8")
+}
+
+[node name="اعلان" type="Label"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "{0} به کارساز پیوست"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_gt7i8")
+
+[node name="پویانمایی" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3v72v")
+}
+autoplay = "پویانمایی"
+
+[connection signal="animation_finished" from="پویانمایی" to="." method="_on_پویانمایی_animation_finished"]

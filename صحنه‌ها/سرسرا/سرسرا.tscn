@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkl4ai81i3wbp"]
+
+[ext_resource type="Theme" uid="uid://gapt4iqc6p3" path="res://سبک.tres" id="1_pnkxg"]
+[ext_resource type="Script" uid="uid://bndb2lkfm5lja" path="res://صحنه‌ها/سرسرا/سرسرا.gd" id="1_wp32g"]
+[ext_resource type="Texture2D" uid="uid://ck6wkty3kiqrg" path="res://فرتوران/پس‌زمینه/black.png" id="2_7npuk"]
+[ext_resource type="Texture2D" uid="uid://bfor52j5yk48l" path="res://فرتوران/kenney_emotes-pack/emote_heart.png" id="20_43m2b"]
+
+[node name="سرسرا" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pnkxg")
+script = ExtResource("1_wp32g")
+
+[node name="سردر" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="پس‌زمینه" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7npuk")
+
+[node name="کار" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="فرستادن" type="Button" parent="کار"]
+layout_mode = 2
+text = "فرستادن پیام"
+
+[node name="پیام" type="LineEdit" parent="کار"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "پیام"
+alignment = 1
+clear_button_enabled = true
+caret_mid_grapheme = true
+
+[node name="تجسم" type="Button" parent="کار"]
+layout_mode = 2
+toggle_mode = true
+text = "تجسم"
+
+[node name="تغییرشکلک" type="Button" parent="کار"]
+layout_mode = 2
+text = "تغییر شکلک"
+
+[node name="فرستادن_شکلک" type="Button" parent="کار"]
+layout_mode = 2
+icon = ExtResource("20_43m2b")
+
+[node name="شکلک" type="AcceptDialog" parent="."]
+title = "شکلک"
+initial_position = 1
+size = Vector2i(452, 271)
+ok_button_text = "باشه"
+
+[node name="نگهدارنده" type="GridContainer" parent="شکلک"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -218.0
+offset_top = 8.0
+offset_right = 218.0
+offset_bottom = 204.0
+grow_horizontal = 2
+columns = 10
+
+[node name="هشدار" type="AcceptDialog" parent="."]
+title = "خطا"
+initial_position = 1
+ok_button_text = "باشه"
+dialog_text = "خواهشمندم پیام خود را بنویسید."
+
+[connection signal="pressed" from="کار/فرستادن" to="." method="پیام_بفرست_فشردن"]
+[connection signal="pressed" from="کار/تغییرشکلک" to="." method="نمایش_شکلکان"]

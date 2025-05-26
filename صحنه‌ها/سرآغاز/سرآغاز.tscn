@@ -1,0 +1,131 @@
+[gd_scene load_steps=4 format=3 uid="uid://buby8xkxlyusy"]
+
+[ext_resource type="Theme" uid="uid://gapt4iqc6p3" path="res://سبک.tres" id="1_etawd"]
+[ext_resource type="Script" uid="uid://ym5vuk40ir8b" path="res://صحنه‌ها/سرآغاز/سرآغاز.gd" id="2_rfcfu"]
+[ext_resource type="Texture2D" uid="uid://ck6wkty3kiqrg" path="res://فرتوران/پس‌زمینه/black.png" id="3_83xp3"]
+
+[node name="سرآغاز" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_etawd")
+script = ExtResource("2_rfcfu")
+
+[node name="پس‌زمینه" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_83xp3")
+
+[node name="رابط" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 142.0
+offset_top = 94.0
+offset_right = 1005.0
+offset_bottom = 572.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="نام" type="LineEdit" parent="رابط"]
+layout_mode = 2
+placeholder_text = "نامت چیست؟"
+alignment = 1
+clear_button_enabled = true
+caret_mid_grapheme = true
+
+[node name="نشانی" type="LineEdit" parent="رابط"]
+visible = false
+layout_mode = 2
+placeholder_text = "نشانی: (127.0.0.1)"
+alignment = 1
+clear_button_enabled = true
+caret_mid_grapheme = true
+
+[node name="درگاه" type="LineEdit" parent="رابط"]
+visible = false
+layout_mode = 2
+placeholder_text = "درگاه: (49152)"
+alignment = 1
+clear_button_enabled = true
+caret_mid_grapheme = true
+
+[node name="کار" type="HBoxContainer" parent="رابط"]
+layout_mode = 2
+
+[node name="ساز" type="Button" parent="رابط/کار"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ساخت کارساز"
+
+[node name="خودکار" type="Button" parent="رابط/کار"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "پیوستن خودکار"
+
+[node name="دستی" type="Button" parent="رابط/کار"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "پیوستن دستی"
+
+[node name="پیوستن" type="Button" parent="رابط/کار"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "پیوستن"
+
+[node name="همگام" type="Button" parent="رابط/کار"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "همگام‌سازی"
+
+[node name="سردر" type="HBoxContainer" parent="رابط"]
+layout_mode = 2
+
+[node name="شمار" type="Label" parent="رابط/سردر"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "شمار کاربران"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="نام" type="Label" parent="رابط/سردر"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "نام کارساز"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="اندیس" type="Label" parent="رابط/سردر"]
+layout_mode = 2
+text = "اندیس"
+
+[node name="کارساز" type="ScrollContainer" parent="رابط"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="فهرست" type="VBoxContainer" parent="رابط/کارساز"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="هشدار" type="AcceptDialog" parent="."]
+title = "نادرست"
+initial_position = 1
+size = Vector2i(259, 116)
+ok_button_text = "باشه"
+dialog_text = "خواهشمندم نام خود را بنویسید."
+
+[connection signal="pressed" from="رابط/کار/ساز" to="." method="کارسازبساز"]
+[connection signal="pressed" from="رابط/کار/خودکار" to="." method="پیوستن_خودکار"]
+[connection signal="pressed" from="رابط/کار/دستی" to="." method="پیوستن_دستی"]
+[connection signal="pressed" from="رابط/کار/پیوستن" to="." method="پیوستن_دستی" binds= [true]]
+[connection signal="pressed" from="رابط/کار/همگام" to="." method="همگام‌سازی"]
+[connection signal="canceled" from="هشدار" to="." method="بستن_هشدار"]
+[connection signal="confirmed" from="هشدار" to="." method="بستن_هشدار"]

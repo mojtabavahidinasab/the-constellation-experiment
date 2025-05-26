@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://gapt4iqc6p3"]
+
+[ext_resource type="FontFile" uid="uid://cmi66277t8r15" path="res://دبیره/Amiri-Regular.ttf" id="1_cgm8o"]
+
+[resource]
+Button/font_sizes/font_size = 23
+Button/fonts/font = ExtResource("1_cgm8o")
+Label/font_sizes/font_size = 23
+Label/fonts/font = ExtResource("1_cgm8o")
+LineEdit/font_sizes/font_size = 23
+LineEdit/fonts/font = ExtResource("1_cgm8o")

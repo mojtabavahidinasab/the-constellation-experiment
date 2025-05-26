@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcjfvulefkpyn"]
+
+[ext_resource type="Script" uid="uid://3imu1v17minv" path="res://صحنه‌ها/اعلان/شکلک.gd" id="1_hc8j1"]
+
+[sub_resource type="Gradient" id="Gradient_cdpnc"]
+offsets = PackedFloat32Array(0.760417, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="شکلک" type="CPUParticles2D"]
+texture_filter = 1
+emitting = false
+amount = 11
+lifetime = 1.2
+one_shot = true
+fixed_fps = 60
+emission_shape = 3
+emission_rect_extents = Vector2(20, 0)
+gravity = Vector2(0, -300)
+damping_min = 100.0
+damping_max = 100.0
+color_ramp = SubResource("Gradient_cdpnc")
+script = ExtResource("1_hc8j1")
+
+[connection signal="finished" from="." to="." method="پایان"]
