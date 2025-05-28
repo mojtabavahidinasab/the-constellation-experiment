@@ -9,6 +9,8 @@ const خطادرگاه = "درگاه درست نیست. باید شماره‌ا
 const خطانشانی = "نشانی درست نیست. باید رشته‌ای 127.0.0.1 گونه باشد."
 const سرسرا = "uid://dkl4ai81i3wbp"
 const سرآغاز = "uid://buby8xkxlyusy"
+const راست = "uid://bmlopd7anw4d3"
+const چپ = "uid://c8rdjpj0w2wkf"
 const اعلان = "uid://bbejnooqc4jc8"
 const شکلک = "uid://dcjfvulefkpyn"
 const شکلک_دل = "uid://bfor52j5yk48l"
@@ -73,4 +75,8 @@ const شکلکان = {
 static var کارساز = ENetMultiplayerPeer.new()
 static var درگاه: int = 49494
 static var نشانی: String = خانه
-static var داده‌ها: Dictionary = {"نام": "نام"}
+static var داده‌ها: Dictionary = {
+	"نام": "نام",
+	"بردها": 0,
+	"بازی‌ها": {}
+	}

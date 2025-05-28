@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkl4ai81i3wbp"]
+[gd_scene load_steps=8 format=3 uid="uid://dkl4ai81i3wbp"]
 
 [ext_resource type="Theme" uid="uid://gapt4iqc6p3" path="res://سبک.tres" id="1_pnkxg"]
 [ext_resource type="Script" uid="uid://bndb2lkfm5lja" path="res://صحنه‌ها/سرسرا/سرسرا.gd" id="1_wp32g"]
 [ext_resource type="Texture2D" uid="uid://ck6wkty3kiqrg" path="res://فرتوران/پس‌زمینه/black.png" id="2_7npuk"]
+[ext_resource type="Texture2D" uid="uid://xyhied2ke5mf" path="res://فرتوران/kenney_emotes-pack/emote_dots3.png" id="4_w3myy"]
+[ext_resource type="PackedScene" uid="uid://bmlopd7anw4d3" path="res://صحنه‌ها/راست/راست.tscn" id="6_0gosi"]
+[ext_resource type="PackedScene" uid="uid://c8rdjpj0w2wkf" path="res://صحنه‌ها/چپ/چپ.tscn" id="7_jcicw"]
 [ext_resource type="Texture2D" uid="uid://bfor52j5yk48l" path="res://فرتوران/kenney_emotes-pack/emote_heart.png" id="20_43m2b"]
 
 [node name="سرسرا" type="Control"]
@@ -15,11 +18,6 @@ grow_vertical = 2
 theme = ExtResource("1_pnkxg")
 script = ExtResource("1_wp32g")
 
-[node name="سردر" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="پس‌زمینه" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -29,7 +27,28 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7npuk")
 
-[node name="کار" type="HBoxContainer" parent="."]
+[node name="راست" parent="." instance=ExtResource("6_0gosi")]
+visible = false
+position = Vector2(1052, 400)
+
+[node name="چپ" parent="." instance=ExtResource("7_jcicw")]
+visible = false
+position = Vector2(100, 400)
+
+[node name="سر" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+
+[node name="پیکربندی" type="Button" parent="سر"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("4_w3myy")
+icon_alignment = 1
+
+[node name="پا" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -38,11 +57,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="فرستادن" type="Button" parent="کار"]
+[node name="فرستادن" type="Button" parent="پا"]
 layout_mode = 2
 text = "فرستادن پیام"
 
-[node name="پیام" type="LineEdit" parent="کار"]
+[node name="پیام" type="LineEdit" parent="پا"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "پیام"
@@ -50,18 +69,18 @@ alignment = 1
 clear_button_enabled = true
 caret_mid_grapheme = true
 
-[node name="تجسم" type="Button" parent="کار"]
+[node name="تجسم" type="CheckBox" parent="پا"]
 layout_mode = 2
-toggle_mode = true
 text = "تجسم"
 
-[node name="تغییرشکلک" type="Button" parent="کار"]
+[node name="تغییرشکلک" type="Button" parent="پا"]
 layout_mode = 2
 text = "تغییر شکلک"
 
-[node name="فرستادن_شکلک" type="Button" parent="کار"]
+[node name="فرستادن_شکلک" type="Button" parent="پا"]
 layout_mode = 2
 icon = ExtResource("20_43m2b")
+icon_alignment = 1
 
 [node name="شکلک" type="AcceptDialog" parent="."]
 title = "شکلک"
@@ -70,14 +89,13 @@ size = Vector2i(452, 271)
 ok_button_text = "باشه"
 
 [node name="نگهدارنده" type="GridContainer" parent="شکلک"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -218.0
-offset_top = 8.0
-offset_right = 218.0
-offset_bottom = 204.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 10
 
 [node name="هشدار" type="AcceptDialog" parent="."]
@@ -86,5 +104,126 @@ initial_position = 1
 ok_button_text = "باشه"
 dialog_text = "خواهشمندم پیام خود را بنویسید."
 
-[connection signal="pressed" from="کار/فرستادن" to="." method="پیام_بفرست_فشردن"]
-[connection signal="pressed" from="کار/تغییرشکلک" to="." method="نمایش_شکلکان"]
+[node name="گزینه‌ها" type="AcceptDialog" parent="."]
+title = "گزینه‌ها"
+initial_position = 1
+size = Vector2i(500, 500)
+ok_button_text = "باشه"
+
+[node name="سربرگ‌ها" type="TabContainer" parent="گزینه‌ها"]
+layout_direction = 3
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 492.0
+offset_bottom = 433.0
+tab_alignment = 1
+current_tab = 0
+
+[node name="بازی" type="ScrollContainer" parent="گزینه‌ها/سربرگ‌ها"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="داده‌ها" type="VBoxContainer" parent="گزینه‌ها/سربرگ‌ها/بازی"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="نشانی" type="Label" parent="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها"]
+layout_mode = 2
+text = "نشانی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="درگاه" type="Label" parent="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها"]
+layout_mode = 2
+text = "درگاه: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="پیکربندی" type="ScrollContainer" parent="گزینه‌ها/سربرگ‌ها"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="گزینه‌ها" type="VBoxContainer" parent="گزینه‌ها/سربرگ‌ها/پیکربندی"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="بودن" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+button_pressed = true
+text = "من همانم که هستم"
+
+[node name="دریافت پیام" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+button_pressed = true
+text = "دریافت پیام"
+
+[node name="فرستادن پیام با فشردن کلید <Enter>" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+button_pressed = true
+text = "فرستادن پیام با فشردن کلید <Enter>"
+
+[node name="نگاشتن تاریخچه پیام‌ها" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+button_pressed = true
+text = "نگاشتن تاریخچه پیام‌ها"
+
+[node name="دریافت شکلک" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+button_pressed = true
+text = "دریافت شکلک"
+
+[node name="دریافت اعلان" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+button_pressed = true
+text = "دریافت اعلان"
+
+[node name="نگاشتن تاریخچه اعلان‌ها" type="CheckButton" parent="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+text = "نگاشتن تاریخچه اعلان‌ها"
+
+[node name="تاریخچه پیام‌ها" type="ScrollContainer" parent="گزینه‌ها/سربرگ‌ها"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="فهرست" type="VBoxContainer" parent="گزینه‌ها/سربرگ‌ها/تاریخچه پیام‌ها"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="تاریخچه اعلان‌ها" type="ScrollContainer" parent="گزینه‌ها/سربرگ‌ها"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="فهرست" type="VBoxContainer" parent="گزینه‌ها/سربرگ‌ها/تاریخچه اعلان‌ها"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="تجسم" type="ScrollContainer" parent="گزینه‌ها/سربرگ‌ها"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="فهرست" type="VBoxContainer" parent="گزینه‌ها/سربرگ‌ها/تجسم"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="بودن" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="pressed" from="سر/پیکربندی" to="." method="پیکربندی"]
+[connection signal="pressed" from="پا/فرستادن" to="." method="فشردن_فرستادن_پیام"]
+[connection signal="text_submitted" from="پا/پیام" to="." method="فرستادن_سریع"]
+[connection signal="toggled" from="پا/تجسم" to="." method="فشردن_تجسم"]
+[connection signal="pressed" from="پا/تغییرشکلک" to="." method="نمایش_شکلکان"]
+[connection signal="toggled" from="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها/بودن" to="." method="من_همانم_که_هستم"]
+[connection signal="timeout" from="بودن" to="." method="بگو"]
