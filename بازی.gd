@@ -3,10 +3,17 @@ class_name بازی
 const کران‌بالای_درگاه: int = 65535
 const کران‌پایین_درگاه: int = 49152
 const خانه: String = "127.0.0.1"
+static var من: String = IP.get_local_addresses()[0]
+const سنگ: String = "ســــــــــــنگ"
+const کاغذ: String = "کاغـــــــــــــذ"
+const قیچی: String = "قیچی!!!"
 const خطانام = "خواهشمندم نام خود را بنویسید."
 const خطانام_یکسان = "خواهشمندم نامتان را تغییر دهید."
+const خطاپیام = "خواهشمندم پیام خود را بنویسید."
+const خطابازی_در_جریان = "اکنون یک بازی در جریان می‌باشد. خواهشمندم صبر کنید."
 const خطادرگاه = "درگاه درست نیست. باید شماره‌ای بین 49152 و 65535 باشد."
 const خطانشانی = "نشانی درست نیست. باید رشته‌ای 127.0.0.1 گونه باشد."
+const هشدارباخت = "اگر می‌خواهید تسلیم شوید «باشه» را بزنید و ببازید. وگرنه کلید «X» را بزنید."
 const سرسرا = "uid://dkl4ai81i3wbp"
 const سرآغاز = "uid://buby8xkxlyusy"
 const راست = "uid://bmlopd7anw4d3"
@@ -74,9 +81,14 @@ const شکلکان = {
 }
 static var کارساز = ENetMultiplayerPeer.new()
 static var درگاه: int = 49494
-static var نشانی: String = خانه
+static func یافتن_نشانی_من():
+	for هرنشانی: String in IP.get_local_addresses():
+		if هرنشانی.begins_with("192.") or هرنشانی.begins_with("10."):
+			return هرنشانی
+static var نشانی: String = یافتن_نشانی_من()
 static var داده‌ها: Dictionary = {
 	"نام": "نام",
 	"بردها": 0,
+	"باخت‌ها": 0,
 	"بازی‌ها": {}
 	}

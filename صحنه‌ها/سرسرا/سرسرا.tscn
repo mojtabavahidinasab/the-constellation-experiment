@@ -1,12 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkl4ai81i3wbp"]
+[gd_scene load_steps=11 format=3 uid="uid://dkl4ai81i3wbp"]
 
 [ext_resource type="Theme" uid="uid://gapt4iqc6p3" path="res://سبک.tres" id="1_pnkxg"]
 [ext_resource type="Script" uid="uid://bndb2lkfm5lja" path="res://صحنه‌ها/سرسرا/سرسرا.gd" id="1_wp32g"]
 [ext_resource type="Texture2D" uid="uid://ck6wkty3kiqrg" path="res://فرتوران/پس‌زمینه/black.png" id="2_7npuk"]
 [ext_resource type="Texture2D" uid="uid://xyhied2ke5mf" path="res://فرتوران/kenney_emotes-pack/emote_dots3.png" id="4_w3myy"]
 [ext_resource type="PackedScene" uid="uid://bmlopd7anw4d3" path="res://صحنه‌ها/راست/راست.tscn" id="6_0gosi"]
+[ext_resource type="PackedScene" uid="uid://c4qbdh45oemxj" path="res://صحنه‌ها/راست/گزینش_راست.tscn" id="6_455kh"]
+[ext_resource type="PackedScene" uid="uid://bqb7ww84hljex" path="res://صحنه‌ها/گزینش_چپ.tscn" id="7_455kh"]
 [ext_resource type="PackedScene" uid="uid://c8rdjpj0w2wkf" path="res://صحنه‌ها/چپ/چپ.tscn" id="7_jcicw"]
 [ext_resource type="Texture2D" uid="uid://bfor52j5yk48l" path="res://فرتوران/kenney_emotes-pack/emote_heart.png" id="20_43m2b"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_455kh"]
+properties/0/path = NodePath("راست:animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("راست:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("راست:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("چپ:animation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("چپ:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("چپ:rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("راست:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("چپ:visible")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:بازیکنان")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath(".:آیا_بازی_درجریان_است")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("نام راست:text")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("نام چپ:text")
+properties/11/spawn = true
+properties/11/replication_mode = 1
 
 [node name="سرسرا" type="Control"]
 layout_mode = 3
@@ -34,6 +74,40 @@ position = Vector2(1052, 400)
 [node name="چپ" parent="." instance=ExtResource("7_jcicw")]
 visible = false
 position = Vector2(100, 400)
+
+[node name="گزینش راست" parent="." instance=ExtResource("6_455kh")]
+visible = false
+offset_left = 574.0
+offset_top = 550.0
+offset_right = 574.0
+offset_bottom = 550.0
+
+[node name="گزینش چپ" parent="." instance=ExtResource("7_455kh")]
+visible = false
+offset_left = 574.0
+offset_top = 550.0
+offset_right = 574.0
+offset_bottom = 550.0
+
+[node name="نام چپ" type="Label" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 470.0
+offset_right = 212.0
+offset_bottom = 511.0
+text = "چپ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="نام راست" type="Label" parent="."]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 470.0
+offset_right = 941.0
+offset_bottom = 511.0
+text = "راست"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="سر" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -128,6 +202,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="آغازبازی" type="Button" parent="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها"]
+visible = false
+layout_mode = 2
+text = "بازی را آغاز کن"
+
+[node name="خروج" type="Button" parent="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها"]
+layout_mode = 2
+text = "خروج از بازی"
+
 [node name="نشانی" type="Label" parent="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها"]
 layout_mode = 2
 text = "نشانی: "
@@ -217,13 +300,38 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="پرسش_برای_آغازبازی" type="ConfirmationDialog" parent="."]
+title = "آیا اکنون بازی آغاز گردد؟"
+initial_position = 1
+size = Vector2i(485, 116)
+ok_button_text = "بلی"
+cancel_button_text = "خیر"
+
+[node name="برچسب" type="Label" parent="پرسش_برای_آغازبازی"]
+offset_right = 40.0
+offset_bottom = 41.0
+text = "می‌توانید بعدا از «گزینه‌ها>بازی» آغاز کنید. انتخاب با شماست."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="بودن" type="Timer" parent="."]
 wait_time = 6.0
+
+[node name="همگام‌ساز" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_455kh")
 
 [connection signal="pressed" from="سر/پیکربندی" to="." method="پیکربندی"]
 [connection signal="pressed" from="پا/فرستادن" to="." method="فشردن_فرستادن_پیام"]
 [connection signal="text_submitted" from="پا/پیام" to="." method="فرستادن_سریع"]
 [connection signal="toggled" from="پا/تجسم" to="." method="فشردن_تجسم"]
 [connection signal="pressed" from="پا/تغییرشکلک" to="." method="نمایش_شکلکان"]
+[connection signal="button_down" from="پا/فرستادن_شکلک" to="." method="نگهداشتن_فرستادن_شکلک"]
+[connection signal="button_up" from="پا/فرستادن_شکلک" to="." method="فشردن_فرستادن_شکلک"]
+[connection signal="canceled" from="هشدار" to="." method="بستن_هشدار"]
+[connection signal="confirmed" from="هشدار" to="." method="باشه_هشدار"]
+[connection signal="pressed" from="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها/آغازبازی" to="." method="فشردن_آغازبازی"]
+[connection signal="pressed" from="گزینه‌ها/سربرگ‌ها/بازی/داده‌ها/خروج" to="." method="خروج"]
 [connection signal="toggled" from="گزینه‌ها/سربرگ‌ها/پیکربندی/گزینه‌ها/بودن" to="." method="من_همانم_که_هستم"]
+[connection signal="canceled" from="پرسش_برای_آغازبازی" to="." method="فشردن_خیر_بعدا_بازی_را_آغاز_کن"]
+[connection signal="confirmed" from="پرسش_برای_آغازبازی" to="." method="فشردن_آغازبازی"]
 [connection signal="timeout" from="بودن" to="." method="بگو"]

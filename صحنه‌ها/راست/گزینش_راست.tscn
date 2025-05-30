@@ -1,9 +1,84 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4qbdh45oemxj"]
+[gd_scene load_steps=11 format=3 uid="uid://c4qbdh45oemxj"]
 
 [ext_resource type="Texture2D" uid="uid://dwxorn66h5yng" path="res://فرتوران/s1.png" id="1_ejqkg"]
 [ext_resource type="Texture2D" uid="uid://bhevpag5jupeo" path="res://فرتوران/p1.png" id="2_ulyg7"]
 [ext_resource type="Texture2D" uid="uid://budjkkr4fofw3" path="res://فرتوران/r1.png" id="3_ct1pw"]
 [ext_resource type="ButtonGroup" uid="uid://bsj2d3qos41eh" path="res://صحنه‌ها/راست/گزینش_راست.tres" id="3_ulyg7"]
+
+[sub_resource type="Animation" id="Animation_ejqkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("قیچی:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("کاغذ:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("سنگ:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("سنگ:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-101, -400)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("کاغذ:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-101, -400)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("قیچی:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-100, -403)]
+}
 
 [sub_resource type="Animation" id="Animation_446p2"]
 resource_name = "آغاز"
@@ -84,22 +159,6 @@ tracks/2/keys = {
 "values": [Vector2(-100, -403), Vector2(-200, -403)]
 }
 
-[sub_resource type="Animation" id="Animation_7xnch"]
-resource_name = "کاغذ"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("کاغذ:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-100, -400), Vector2(-100, -500)]
-}
-
 [sub_resource type="Animation" id="Animation_hdvsu"]
 resource_name = "قیچی"
 length = 0.2
@@ -140,124 +199,9 @@ tracks/2/keys = {
 "values": [Vector2(-100, -403), Vector2(-100, -500)]
 }
 
-[sub_resource type="Animation" id="Animation_ejqkg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("قیچی:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("کاغذ:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("سنگ:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("سنگ:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-101, -400)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("کاغذ:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-101, -400)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/path = NodePath("قیچی:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-100, -403)]
-}
-
-[sub_resource type="Animation" id="Animation_ulyg7"]
-resource_name = "ناسنگ"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("قیچی:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-200, -403), Vector2(-100, -403)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("کاغذ:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-200, -400), Vector2(-100, -400)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("سنگ:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-101, -500), Vector2(-101, -400)]
-}
-
-[sub_resource type="Animation" id="Animation_ct1pw"]
-resource_name = "ناکاغذ"
-length = 0.4
+[sub_resource type="Animation" id="Animation_7xnch"]
+resource_name = "کاغذ"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -265,50 +209,10 @@ tracks/0/path = NodePath("کاغذ:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-100, -500), Vector2(-100, -400)]
-}
-
-[sub_resource type="Animation" id="Animation_jelv5"]
-resource_name = "ناقیچی"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("قیچی:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-100, -500), Vector2(-100, -400)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("کاغذ:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -400), Vector2(-100, -400)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("سنگ:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -400), Vector2(-100, -400)]
+"values": [Vector2(-100, -400), Vector2(-100, -500)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jelv5"]
@@ -317,9 +221,6 @@ _data = {
 &"آغاز": SubResource("Animation_446p2"),
 &"سنگ": SubResource("Animation_6mp7l"),
 &"قیچی": SubResource("Animation_hdvsu"),
-&"ناسنگ": SubResource("Animation_ulyg7"),
-&"ناقیچی": SubResource("Animation_jelv5"),
-&"ناکاغذ": SubResource("Animation_ct1pw"),
 &"کاغذ": SubResource("Animation_7xnch")
 }
 
@@ -328,6 +229,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="قیچی" type="Button" parent="."]
+layout_mode = 0
 offset_left = -100.0
 offset_top = -403.0
 offset_right = 108.0
@@ -360,6 +262,7 @@ icon = ExtResource("2_ulyg7")
 icon_alignment = 1
 
 [node name="سنگ" type="Button" parent="."]
+layout_mode = 0
 offset_left = -101.0
 offset_top = -400.0
 offset_right = 107.0

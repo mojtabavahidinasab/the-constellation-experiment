@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmlopd7anw4d3"]
+[gd_scene load_steps=9 format=3 uid="uid://bmlopd7anw4d3"]
 
 [ext_resource type="Texture2D" uid="uid://budjkkr4fofw3" path="res://فرتوران/r1.png" id="1_d5pxy"]
 [ext_resource type="Texture2D" uid="uid://dwxorn66h5yng" path="res://فرتوران/s1.png" id="2_7hpag"]
@@ -31,6 +31,38 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_7hpag"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wqlh2"]
+resource_name = "پایان"
+length = 0.1
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
 [sub_resource type="Animation" id="Animation_d5pxy"]
 resource_name = "پویانمایی"
 step = 0.0
@@ -47,24 +79,10 @@ tracks/0/keys = {
 "values": [0.0, -1.5708, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_7hpag"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j58iv"]
 _data = {
 &"RESET": SubResource("Animation_7hpag"),
+&"پایان": SubResource("Animation_wqlh2"),
 &"پویانمایی": SubResource("Animation_d5pxy")
 }
 

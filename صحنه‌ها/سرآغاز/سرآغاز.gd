@@ -3,7 +3,7 @@ var شنونده = PacketPeerUDP.new()
 var کارسازان: Dictionary = {}
 
 
-func ازنوبشنو(کران‌پایین, کران‌بالا):
+func ازنوبشنو(کران‌پایین, کران‌بالا):#TODO
 	for درگاه in range(بازی.کران‌پایین_درگاه, بازی.کران‌بالای_درگاه):
 			var خطا = شنونده.bind(درگاه)
 			if خطا == OK:
@@ -13,7 +13,8 @@ func ازنوبشنو(کران‌پایین, کران‌بالا):
 
 
 func پیوستن(نشانی: String, درگاه: int, خودکار: bool = true):
-	print("addr: ", نشانی, ", port: ", درگاه)
+	if not خودکار:
+		شنونده.close()
 	if $"رابط/نام".text.strip_edges() == "":
 		$هشدار.show()
 		return 0
@@ -27,6 +28,11 @@ func پیوستن(نشانی: String, درگاه: int, خودکار: bool = true
 		بازی.داده‌ها["نام"] = $"رابط/نام".text
 		multiplayer.multiplayer_peer = بازی.کارساز
 		get_tree().change_scene_to_file(بازی.سرسرا)
+	else:
+		#TODO: گویاتر و روشن تر کردن اعلان‌های خطا
+		var اعلان = preload(بازی.اعلان).instantiate()
+		اعلان.text = "خطا در پیوستن"
+		add_child(اعلان)
 
 
 func پیوستن_خودکار():
@@ -127,10 +133,13 @@ func کارسازبساز():
 		return 0
 	var خطا = بازی.کارساز.create_server(بازی.درگاه)
 	if خطا == OK:
-		print("new port: ", بازی.درگاه)
 		multiplayer.multiplayer_peer = بازی.کارساز
 		بازی.داده‌ها["نام"] = $"رابط/نام".text
-		بازی.داده‌ها["شمارگان"] = multiplayer.get_peers()
+		بازی.داده‌ها["شمارگان"] = 0
 		get_tree().change_scene_to_file(بازی.سرسرا)
 	else:
 		بازی.درگاه = randi_range(بازی.کران‌پایین_درگاه, بازی.کران‌بالای_درگاه)
+		$"رابط/درگاه".text = "درگاه: {0}".format([str(بازی.درگاه)])
+		var اعلان = preload(بازی.اعلان).instantiate()
+		اعلان.text = "نودرگاه {0} می‌باشد.".format([str(بازی.درگاه)])
+		add_child(اعلان)
