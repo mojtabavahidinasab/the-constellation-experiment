@@ -7,9 +7,8 @@
 ## نگارخانه
 
 
-| گفتگو                                               | شکلک                                                |   |   |
-| https://bayanbox.ir/view/5535036634028513491/ch.jpg | https://bayanbox.ir/view/7516569336036495895/em.jpg |   |   |
-
+| گفتگو                                               | شکلک                                                |
+| https://bayanbox.ir/view/5535036634028513491/ch.jpg | https://bayanbox.ir/view/7516569336036495895/em.jpg |
 
 
 ## فهرست کارهایی که باید انجام شود:
